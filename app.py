@@ -46,6 +46,8 @@ name, authentication_status, username = authenticator.login('Login', 'main')
 if authentication_status:
     authenticator.logout('Logout', 'main')
     st.title("ChatGPT")
+    st.write("教程[link](https://betterprogramming.pub/build-a-custom-chatbot-using-chatgpt-api-and-streamlit-c86ad4ef9b35")
+
     openai.api_key = st.secrets["OPENAI_KEY"]
     BASE_PROMPT = [{"role": "system", "content": "You are a helpful assistant."}]
 
