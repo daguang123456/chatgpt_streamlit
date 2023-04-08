@@ -59,7 +59,7 @@ if authentication_status:
     text = st.empty()
     show_messages(text)
 
-    prompt = st.text_input("Prompt", value="Enter your message here...")
+    prompt = st.text_input("Prompt", value="输入...")
 
     if st.button("发送"):
         with st.spinner("Generating response..."):
