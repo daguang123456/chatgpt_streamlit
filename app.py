@@ -17,11 +17,11 @@ def show_messages(text):
     messages_str = [
         f"{_['role']}: {_['content']}" for _ in st.session_state["messages"][1:]
     ]
-    text.text_area("Messages", value=str("\n".join(messages_str)), height=400)
+    text.text_area("聊天记录", value=str("\n".join(messages_str)), height=400)
 
 
-with open("secrets.toml", "r") as f:
-    config1 = toml.load(f)
+# with open("secrets.toml", "r") as f:
+#     config1 = toml.load(f)
 
 
 
@@ -52,14 +52,14 @@ if authentication_status:
     if "messages" not in st.session_state:
         st.session_state["messages"] = BASE_PROMPT
 
-    st.header("STREAMLIT GPT-3 CHATBOT")
+    st.header("STREAMLIT GPT-3 聊天机器人")
 
     text = st.empty()
     show_messages(text)
 
     prompt = st.text_input("Prompt", value="Enter your message here...")
 
-    if st.button("Send"):
+    if st.button("发送"):
         with st.spinner("Generating response..."):
             st.session_state["messages"] += [{"role": "user", "content": prompt}]
             response = openai.ChatCompletion.create(
@@ -71,7 +71,7 @@ if authentication_status:
             ]
             show_messages(text)
 
-    if st.button("Clear"):
+    if st.button("清除"):
         st.session_state["messages"] = BASE_PROMPT
         show_messages(text)
 
