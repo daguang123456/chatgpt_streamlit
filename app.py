@@ -46,7 +46,7 @@ name, authentication_status, username = authenticator.login('Login', 'main')
 if authentication_status:
     authenticator.logout('Logout', 'main')
     st.title("ChatGPT")
-    openai.api_key = config1["OPENAI_KEY"]
+    openai.api_key = st.secrets["OPENAI_KEY"]
     BASE_PROMPT = [{"role": "system", "content": "You are a helpful assistant."}]
 
     if "messages" not in st.session_state:
